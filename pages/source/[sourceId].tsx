@@ -1,10 +1,13 @@
 import Head from "next/head";
 import Header from "@/components/Header";
 import { Container, Image, VStack } from "@chakra-ui/react";
-import Hero from "@/components/Hero";
-import NewsList from "@/components/NewsList";
+import NewsSource from "@/components/NewsSource";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const { sourceId } = router.query;
+
   return (
     <>
       <Head>
@@ -22,8 +25,7 @@ export default function Home() {
           px={2}
         >
           <Header />
-          <Hero />
-          <NewsList />
+          <NewsSource source={sourceId as string} />
           <Image
             src="/img/footerlogo.svg"
             alt="footer"
